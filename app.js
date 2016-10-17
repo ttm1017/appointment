@@ -17,6 +17,8 @@ app.use(convert(bodyparser));
 app.use(convert(json()));
 app.use(convert(logger()));
 app.use(require('koa-static')(__dirname + '/public'));
+app.use(require('koa-static')(__dirname + '/build'));
+
 
 // logger
 app.use(async (ctx, next) => {
