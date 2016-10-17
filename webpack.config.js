@@ -1,7 +1,9 @@
 const webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     entry: {
-        main: './public/main.jsx'
+        main: './public/js/index.jsx',
+        style: './public/css/style.scss'
     },
     output: {
         path: './build',
@@ -12,8 +14,12 @@ module.exports = {
             test: /\.jsx?$/,
             exclude: /node_modules/,
             loader: 'babel'
+        }, {
+            test: /\.scss$/,
+            loader: ExtractTextPlugin.extract("style", "css!sass")
         }]
-    }
+    },
+    devtool: "eval",
     // plugins: [
     //     new webpack.ProvidePlugin({
     //         $: "jquery",
@@ -21,4 +27,7 @@ module.exports = {
     //         "window.jQuery": "jquery"
     //     })
     // ]
-}
+    plugins: [
+        new ExtractTextPlugin("[name].css")
+    ]
+};
