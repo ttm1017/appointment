@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Header from '../component/common/header.jsx';
 import Activity from './activity.jsx';
 import User from './user.jsx';
-import { addActivity, cancelActivity, toActivity, toUserInfo } from '../actions/index.js';
+import { addActivity, cancelActivity, toActivity, toUserInfo, ShowcurrentTime } from '../actions/index.js';
 /**
  * @store
  * @property {string} category  - judge which category.value: activity,userInfo
@@ -20,10 +20,20 @@ class App extends React.Component {
         super(props);
     }
     render() {
-        const {dispatch, category, detail} = this.props;
+        const {dispatch, category, detail, activityList, activityIntro, currentTime} = this.props;
+        console.log(activityIntro);
         let MainContainer;
+        const cMonthActivity = detail[currentTime];
         if (category === 'Activity') {
-            MainContainer = <Activity />;
+            MainContainer = <Activity 
+                activityList={activityList} 
+                activityIntro={activityIntro} 
+                ShowCurrentTime={t => dispatch(ShowcurrentTime(t))}
+                currentTime={currentTime}
+                cMonthActivity = {cMonthActivity}
+                dispatch = {dispatch}
+                detail = {detail}
+            />;
         } else {
             MainContainer = <User />;
         }
@@ -44,7 +54,10 @@ class App extends React.Component {
 function select(state) {
     return {
         category: state.changeCategory.category,
-        detail: state.dealActivity.detail
+        currentTime: state.addCurrentTime.currentTime,
+        detail: state.dealActivity.detail,
+        activityList: state.changeActivityList.activityList,
+        activityIntro: state.changeActivityList.activityIntro
     }
 }
 export default connect(select)(App);
