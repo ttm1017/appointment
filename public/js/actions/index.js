@@ -1,6 +1,6 @@
 export const ACTI_ADD = "ADD_activity";
 export const ACTI_CANCEL = "CANCEL_activity";
-
+export const SHOW_CurrentTime = "SHOW_Time";
 //activity operation
 
 export function addActivity(activity) {
@@ -23,5 +23,11 @@ export function toActivity() {
 export function toUserInfo() {
     return {
         type: visibilityFilters.SHOW_UserInfo
+    }
+}
+export function ShowcurrentTime(t) {
+    return {
+        type: SHOW_CurrentTime,
+        time: t
     }
 }
