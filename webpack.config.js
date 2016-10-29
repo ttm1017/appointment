@@ -17,6 +17,9 @@ module.exports = {
         }, {
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract("style", "css!sass")
+        }, {
+            test: /\.jpg|png$/,
+            loader: "file-loader"
         }]
     },
     devtool: "eval",
