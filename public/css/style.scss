@@ -1,2 +1,19 @@
 @import './index/Calendar.scss';
 @import './common/index.scss';
+@import './index/activityList.scss';
+@import './index/activityDetail.scss';
+* {
+  margin: 0;
+  padding: 0;
+}
+body,h1,h2,h3,h4 {
+  font-family: tahoma,arial,'Hiragino Sans GB',"Microsoft Yahei"
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+.activity_interface {
+  margin: 0 auto;
+  width: 1440px;
+}

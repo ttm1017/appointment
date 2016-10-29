@@ -1,4 +1,11 @@
+.Date {
+  display: inline-block;
+  width: 496px;
+  text-align: center;
+  vertical-align: top;
+}
 .rc-calendar {
+  display: inline-block;
   position: relative;
   outline: none;
   font-family: Arial, "Hiragino Sans GB", "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;

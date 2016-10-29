@@ -1,0 +1,37 @@
+.List {
+  display: inline-block;
+  margin:0 44px;
+  padding: 0 16px 34px;
+  height: 560px;
+  width: 313px;
+  vertical-align: top;
+  background: #d3d3d3;
+  box-sizing: border-box;
+  .listTitle {
+    margin: 15px 0;
+    font-family: "STHeitiSC";
+  }
+  ul {
+    height: 468px;
+    background-color: #eeeeee;
+    overflow : auto;
+    li {
+      padding: 10px 19px;
+      height: 78px;
+      box-sizing: border-box;
+      border-bottom: 1px #d3d3d3 solid;
+      img {
+        height: 100%;
+      }
+      .info {
+        margin-left: 19px;
+        display: inline-block;
+        vertical-align: top;
+        color: black;
+      }
+      &:hover {
+        background-color: #666666;
+      }
+    }
+  }
+}
