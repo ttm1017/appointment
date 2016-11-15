@@ -8,16 +8,17 @@ const json = require('koa-json');
 const onerror = require('koa-onerror');
 const bodyparser = require('koa-bodyparser')();
 const logger = require('koa-logger');
+const mount = require('koa-mount');
 
 const index = require('./routes/index');
-const users = require('./routes/users');
 
 // middlewares
 app.use(convert(bodyparser));
 app.use(convert(json()));
 app.use(convert(logger()));
-app.use(require('koa-static')(__dirname + '/public'));
-app.use(require('koa-static')(__dirname + '/build'));
+app.use(mount('/public', require('koa-static')(__dirname + '/public')));
+app.use(mount('/build', require('koa-static')(__dirname + '/build')));
+app.use(mount('/semantic', require('koa-static')(__dirname + '/semantic')));
 
 
 // logger
@@ -29,7 +30,6 @@ app.use(async (ctx, next) => {
 });
 
 router.use('/', index.routes(), index.allowedMethods());
-router.use('/users', users.routes(), users.allowedMethods());
 
 app.use(router.routes(), router.allowedMethods());
 // response
